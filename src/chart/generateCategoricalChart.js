@@ -70,6 +70,7 @@ const generateCategoricalChart = ({
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
       ]),
+      viewBox: PropTypes.object,
       onClick: PropTypes.func,
       onMouseLeave: PropTypes.func,
       onMouseEnter: PropTypes.func,
@@ -593,7 +594,7 @@ const generateCategoricalChart = ({
     }
 
     getCursorRectangle() {
-      const { layout } = this.props;
+      const { layout, viewBox } = this.props;
       const { activeCoordinate, offset, tooltipAxisBandSize } = this.state;
       const halfSize = tooltipAxisBandSize / 2;
 
@@ -604,6 +605,7 @@ const generateCategoricalChart = ({
         y: layout === 'horizontal' ? offset.top + 0.5 : activeCoordinate.y - halfSize,
         width: layout === 'horizontal' ? tooltipAxisBandSize : offset.width - 1,
         height: layout === 'horizontal' ? offset.height - 1 : tooltipAxisBandSize,
+        viewBox,
       };
     }
 
